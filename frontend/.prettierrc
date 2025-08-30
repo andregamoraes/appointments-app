@@ -1,0 +1,33 @@
+{
+  "useTabs": true,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "semi": true,
+  "printWidth": 200,
+  "tabWidth": 4,
+  "bracketSameLine": true,
+  "singleAttributePerLine": false,
+  "htmlWhitespaceSensitivity": "ignore",
+  "jsxSingleQuote": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "proseWrap": "preserve",
+  "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.json", "*.jsonc"],
+      "options": {
+        "printWidth": 100,
+        "tabWidth": 2,
+        "useTabs": false
+      }
+    },
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "always"
+      }
+    }
+  ]
+}
