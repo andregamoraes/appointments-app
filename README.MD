@@ -13,6 +13,12 @@ Production-ready setup with Docker Compose, environment variables, caching, logg
 
 ## Environment setup
 
+0) **Clone the repository**
+```bash
+git clone https://github.com/andregamoraes/appointments-app.git
+cd appointments-app
+```
+
 1) **Backend (Django)**
 Copy `.env.example` to `.env`:
 
