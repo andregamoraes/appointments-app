@@ -1,8 +1,8 @@
 
 # Appointments App — Next.js + Django REST
 
-Full-stack appointments application with a **Next.js frontend**, **Django REST backend**, and **Postgres** persistence.  
-Production-ready setup with Docker Compose, environment variables, caching, logging, and JWT authentication.
+Full-stack appointments application with a **Next.js frontend**, **Django REST backend**, and **Postgres** persistence.
+Production-ready setup with Docker Compose, environment variables and JWT authentication.
 
 ## Stack
 
