@@ -1,4 +1,3 @@
-// src/app/home/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -10,7 +9,7 @@ import { useRouter } from 'next/navigation';
 
 function fmtDateTime(iso: string) {
 	const d = new Date(iso);
-	return d
+	const str = d
 		.toLocaleString('pt-BR', {
 			weekday: 'long',
 			day: '2-digit',
@@ -20,6 +19,8 @@ function fmtDateTime(iso: string) {
 			timeZone: 'UTC'
 		})
 		.replace('.', '');
+
+	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export default function HomePage() {
