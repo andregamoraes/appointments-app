@@ -38,17 +38,4 @@ class Command(BaseCommand):
                 therapist.save(update_fields=["password"])
             self.stdout.write(self.style.SUCCESS(f"Therapist {i}: {email} / {DEFAULT_PWD}"))
 
-        # # (Opcional) superuser para /admin
-        # if not User.objects.filter(email="admin@example.com").exists():
-        #     admin = User.objects.create(
-        #         email="admin@example.com",
-        #         name="Admin",
-        #         type=User.UserType.PATIENT,
-        #         is_staff=True,
-        #         is_superuser=True,
-        #     )
-        #     admin.set_password(DEFAULT_PWD)
-        #     admin.save(update_fields=["password"])
-        #     self.stdout.write(self.style.SUCCESS(f"Admin: admin@example.com / {DEFAULT_PWD}"))
-
         self.stdout.write(self.style.SUCCESS("Demo users seeded."))
