@@ -34,13 +34,13 @@ cp frontend/.env.example frontend/.env.local`
 ```
 
 4) Run with Docker
-`docker compose up --build`
+`docker-compose up --build`
 
 - Frontend available at: http://localhost:3000
 - Backend API available at: http://localhost:4000
 
 5) (Optional) Create Django superuser
-`docker compose exec backend python manage.py createsuperuser`
+`docker-compose exec backend python manage.py createsuperuser`
 
 ## Demo logins
 
