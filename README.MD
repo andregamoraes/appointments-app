@@ -13,33 +13,33 @@ Production-ready setup with Docker Compose, environment variables, caching, logg
 
 ## Environment setup
 
-0) **Clone the repository**
+1) **Clone the repository**
 ```bash
 git clone https://github.com/andregamoraes/appointments-app.git
 cd appointments-app
 ```
 
-1) **Backend (Django)**
+2) **Backend (Django)**
 Copy `.env.example` to `.env`:
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-2) **Frontend (Next.js)**
+3) **Frontend (Next.js)**
 Copy `.env.example` to `.env.local`:
 
 ```bash
-`cp frontend/.env.example frontend/.env.local`
+cp frontend/.env.example frontend/.env.local`
 ```
 
-3) Run with Docker
+4) Run with Docker
 `docker compose up --build`
 
 - Frontend available at: http://localhost:3000
 - Backend API available at: http://localhost:4000
 
-4) (Optional) Create Django superuser
+5) (Optional) Create Django superuser
 `docker compose exec backend python manage.py createsuperuser`
 
 ## Demo logins
