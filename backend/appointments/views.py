@@ -163,7 +163,7 @@ class DashboardSummaryView(APIView):
         active_plan = (
             Contract.objects
             .select_related("therapist")
-            .filter(patient_id=user.id, is_active=True)
+            .filter(patient_id=user.id, is_active=True, last_session_at__gte=now)
             .order_by("-created_at")
             .values(
                 "id",
