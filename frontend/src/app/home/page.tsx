@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
 import { Api, AppointmentSummary } from '@/services/api';
-import { CalendarDays, Ticket } from 'lucide-react';
+import { CalendarDays, Ticket, Clock } from 'lucide-react';
 import BottomNav from '@/components/BottomNav';
 import { useRouter } from 'next/navigation';
 
@@ -22,6 +22,19 @@ function fmtDateTime(iso: string) {
 
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+function fmtFixedSchedule(iso: string) {
+  const d = new Date(iso);
+  const str = d.toLocaleString('pt-BR', {
+    weekday: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'UTC'
+  });
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 
 export default function HomePage() {
 	const router = useRouter();
@@ -72,9 +85,25 @@ export default function HomePage() {
 											{summary!.active_plan!.type === 'QUINZENAL' ? 'Quinzenal, 40min' : summary!.active_plan!.type === 'SEMANAL' ? 'Semanal, 40min' : 'Avulso, 40min'}
 										</div>
 									</div>
+                                    <div className='ml-auto opacity-60'>›</div>
 								</div>
 							</div>
 						)}
+
+                        {hasPlan && summary!.active_plan!.type !== 'AVULSO' && (
+                            <div className='bg-white text-gray-900 rounded-2xl shadow p-4 mb-4'>
+                                <div className='text-xs font-semibold text-gray-500 mb-1'>HORÁRIO FIXO</div>
+                                <div className='flex items-center justify-between'>
+                                    <div className='flex items-center gap-3'>
+                                        <div className='p-2 bg-gray-100 rounded-xl'>
+                                            <Clock className='w-5 h-5 text-gray-700' />
+                                        </div>
+                                        <div className='font-semibold'>{fmtFixedSchedule(summary!.next_appointments[0].start)}</div>
+                                    </div>
+                                    <div className='ml-auto opacity-60'>›</div>
+                                </div>
+                            </div>
+                        )}
 
 						{hasNext && <h3 className='mt-4 mb-2 text-white/90 font-semibold'>Próximas Consultas com {therapistName}</h3>}
 
