@@ -93,19 +93,13 @@ class BookingCreateView(APIView):
         plan = s.validated_data["plan"]
         start = s.validated_data["start"]
 
-        try:
-            contract = Contract.objects.create(
-                patient_id=patient.id,
-                therapist_id=therapist_id,
-                type=plan,
-                first_session_at=start,
-                is_active=True,
-            )
-        except IntegrityError as e:
-            return Response(
-                {"detail": "Erro ao criar contrato. Verifique os dados enviados."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+        contract = Contract.objects.create(
+            patient_id=patient.id,
+            therapist_id=therapist_id,
+            type=plan,
+            first_session_at=start,
+            is_active=True,
+        )
 
         end = start + timedelta(minutes=self.SESSION_MINUTES)
 
@@ -137,6 +131,7 @@ class BookingCreateView(APIView):
                 return Response({"detail": "Plano inválido"}, status=400)
 
         except serializers.ValidationError as e:
+            transaction.set_rollback(True)
             return Response(e.detail, status=409)  # conflito
 
         last = Appointment.objects.filter(contract=contract).order_by("-start").first()
